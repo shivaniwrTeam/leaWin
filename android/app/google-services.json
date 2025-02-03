@@ -1,0 +1,123 @@
+{
+  "project_info": {
+    "project_number": "509317486900",
+    "firebase_url": "https://leawin-apo.firebaseio.com",
+    "project_id": "leawin-apo",
+    "storage_bucket": "leawin-apo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509317486900:android:dfbe2dd28aee94ced6ed61",
+        "android_client_info": {
+          "package_name": "com.app.learnandwinapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509317486900-6i2mnp9omtuue799mc0l50bdhq38ui6r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.learnandwinapp",
+            "certificate_hash": "4cd56deeeb4613231f689af5e46f5e76e2ec2da2"
+          }
+        },
+        {
+          "client_id": "509317486900-7bbvpvse80etktudh4r6rlan14f5vugi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.learnandwinapp",
+            "certificate_hash": "c488b118b2fe4375554f6206eaf6eba8375f9499"
+          }
+        },
+        {
+          "client_id": "509317486900-7knav47hrvtnkjuk84gjrcutpb8nrsum.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.learnandwinapp",
+            "certificate_hash": "21cbe972b4b4845d6c74ff4c788ea0d160bcd22e"
+          }
+        },
+        {
+          "client_id": "509317486900-6u4i7jom5pt7v9vhdomh8bourpeu7i28.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALrktdM47mPNcB2JEDuzTlra79Iv5YP_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509317486900-6u4i7jom5pt7v9vhdomh8bourpeu7i28.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509317486900-590erntfairhltbnhkom5pp66hnahiqb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.learnandwin.androidapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509317486900:android:05ca21a3a4ccf95bd6ed61",
+        "android_client_info": {
+          "package_name": "com.learnandwin.androidapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509317486900-1m2h0m919eq1cehrh478370lesmi3r7u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.learnandwin.androidapp",
+            "certificate_hash": "4cd56deeeb4613231f689af5e46f5e76e2ec2da2"
+          }
+        },
+        {
+          "client_id": "509317486900-t10lr8o46pl7eh26tk7nlpm4qplu1d47.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.learnandwin.androidapp",
+            "certificate_hash": "21cbe972b4b4845d6c74ff4c788ea0d160bcd22e"
+          }
+        },
+        {
+          "client_id": "509317486900-6u4i7jom5pt7v9vhdomh8bourpeu7i28.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALrktdM47mPNcB2JEDuzTlra79Iv5YP_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509317486900-6u4i7jom5pt7v9vhdomh8bourpeu7i28.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "509317486900-590erntfairhltbnhkom5pp66hnahiqb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.learnandwin.androidapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
