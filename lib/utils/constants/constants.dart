@@ -16,10 +16,10 @@ const packageName = 'com.app.learnandwinapp';
 /// Add your database url
 // NOTE: make sure to not add '/' at the end of url
 // NOTE: make sure to check if admin panel is http or https
-const databaseUrl = 'https://elitequiz.wrteam.me';
+const databaseUrl = 'https://quiz.mivim.shop';
 
 // Enter 2 Letter ISO Country Code
-const defaultCountryCodeForPhoneLogin = 'IN';
+const defaultCountryCodeForPhoneLogin = 'GH';
 
 /// Default App Theme : lightThemeKey or darkThemeKey
 const defaultThemeKey = lightThemeKey;

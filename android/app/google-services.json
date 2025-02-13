@@ -39,6 +39,14 @@
           }
         },
         {
+          "client_id": "509317486900-n6bqldo2dlmg5hs31pgda3vvgdmkerso.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.learnandwinapp",
+            "certificate_hash": "04ea7e62cf52a41e668d023435f82e7ca53d5d30"
+          }
+        },
+        {
           "client_id": "509317486900-6u4i7jom5pt7v9vhdomh8bourpeu7i28.apps.googleusercontent.com",
           "client_type": 3
         }
