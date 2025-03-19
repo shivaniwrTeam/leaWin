@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 const klBackgroundColor = Color(0xffffffff);
 const klCanvasColor = Color(0xcc000000);
 const klPageBackgroundColor = Color(0xfff3f7fa);
-const klPrimaryColor = Color(0xff3a8bc3);
+const klPrimaryColor = Color(0xffff5a00);
 const klPrimaryTextColor = Color(0xff45536d);
 
 /// Dark Theme
 const kdBackgroundColor = Color(0xff294261);
 const kdCanvasColor = Color(0xccffffff);
 const kdPageBackgroundColor = Color(0xff233354);
-const kdPrimaryColor = Color(0xff3E8FBC);
+const kdPrimaryColor = Color(0xffFF7B33);
 const kdPrimaryTextColor = Color(0xfffefefe);
 
 /// Common

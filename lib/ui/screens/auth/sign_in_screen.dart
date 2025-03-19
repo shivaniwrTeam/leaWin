@@ -15,7 +15,9 @@ import 'package:flutterquiz/ui/screens/auth/widgets/app_logo.dart';
 import 'package:flutterquiz/ui/screens/auth/widgets/email_textfield.dart';
 import 'package:flutterquiz/ui/screens/auth/widgets/pswd_textfield.dart';
 import 'package:flutterquiz/ui/screens/auth/widgets/terms_and_condition.dart';
+import 'package:flutterquiz/ui/widgets/NoInterNet.dart';
 import 'package:flutterquiz/ui/widgets/all.dart';
+import 'package:flutterquiz/ui/widgets/networkAvailablity.dart';
 import 'package:flutterquiz/utils/constants/assets_constants.dart';
 import 'package:flutterquiz/utils/constants/error_message_keys.dart';
 import 'package:flutterquiz/utils/constants/fonts.dart';
@@ -35,10 +37,12 @@ class _SignInScreenState extends State<SignInScreen> {
   final _formKeyDialog = GlobalKey<FormState>();
 
   bool isLoading = false;
-
+  bool isNoInternet = false;
   final emailController = TextEditingController();
   final forgotPswdController = TextEditingController();
   final pswdController = TextEditingController();
+  Animation? buttonSqueezeanimation;
+  AnimationController? buttonController;
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +50,43 @@ class _SignInScreenState extends State<SignInScreen> {
       create: (_) => SignInCubit(AuthRepository()),
       child: Builder(
         builder: (context) => Scaffold(
-          body: SingleChildScrollView(
+          body: isNoInternet ? NoInterNet(
+              setStateNoInternate: setStateNoInternate,
+              buttonSqueezeanimation: buttonSqueezeanimation,
+              buttonController: buttonController,
+            )
+          :SingleChildScrollView(
             child: showForm(context),
-          ),
+          )
         ),
       ),
     );
+  }
+
+  setStateNoInternate() async {
+    _playAnimation();
+    Future.delayed(const Duration(seconds: 2)).then(
+      (_) async {
+        isNetworkAvail = await isNetworkAvailable();
+        if (isNetworkAvail) {
+          Navigator.pushReplacement(
+            context,
+            CupertinoPageRoute(
+              builder: (BuildContext context) => super.widget,
+            ),
+          );
+        } else {
+          await buttonController!.reverse();
+          if (mounted) setState(() {});
+        }
+      },
+    );
+  }
+
+   Future<void> _playAnimation() async {
+    try {
+      await buttonController!.forward();
+    } on TickerCanceled {}
   }
 
   Widget showForm(BuildContext context) {
@@ -498,7 +533,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
         return Container(
           padding: const EdgeInsets.only(top: 20),
-          child: Row(
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: (state is SignInProgress &&
@@ -510,6 +545,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     ///
                     if (Platform.isIOS && c.isAppleLoginMethodEnabled) ...[
                       _buildAppleLoginIconButton(context),
+                      const SizedBox(
+                        height: 10,
+                      )
                     ],
 
                     ///
@@ -536,18 +574,35 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget _buildAppleLoginIconButton(BuildContext context) {
     return InkWell(
       child: Container(
-        height: 50,
-        width: 50,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,
           borderRadius: const BorderRadius.all(Radius.circular(12)),
         ),
         alignment: Alignment.center,
         padding: const EdgeInsets.all(12),
-        child: SvgPicture.asset(
-          Assets.appleIcon,
-          height: 38,
-          width: 38,
+        child: Row(
+          mainAxisSize: MainAxisSize.min, // Prevent unnecessary expansion
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              Assets.appleIcon,
+              height: 30,
+              width: 30,
+            ),
+            const SizedBox(width: 15),
+            Flexible(
+              // Prevent text from exceeding width
+              child: Text(
+                context.tr('signInApple')!,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 18,
+                ),
+                overflow: TextOverflow.ellipsis, // Prevents text overflow
+                softWrap: false,
+              ),
+            ),
+          ],
         ),
       ),
       onTap: () => context.read<SignInCubit>().signInUser(AuthProviders.apple),
@@ -557,18 +612,35 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget _buildGmailLoginIconButton(BuildContext context) {
     return InkWell(
       child: Container(
-        height: 50,
-        width: 50,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,
           borderRadius: const BorderRadius.all(Radius.circular(12)),
         ),
         alignment: Alignment.center,
         padding: const EdgeInsets.all(12),
-        child: SvgPicture.asset(
-          Assets.googleIcon,
-          height: 38,
-          width: 38,
+        child: Row(
+          mainAxisSize: MainAxisSize.min, // Prevent unnecessary expansion
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              Assets.googleIcon,
+              height: 30,
+              width: 30,
+            ),
+            const SizedBox(width: 15),
+            Flexible(
+              // Prevent text from exceeding width
+              child: Text(
+                context.tr('signInGoogle')!,
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 18,
+                ),
+                overflow: TextOverflow.ellipsis, // Prevents text overflow
+                softWrap: false,
+              ),
+            ),
+          ],
         ),
       ),
       onTap: () => context.read<SignInCubit>().signInUser(AuthProviders.gmail),
@@ -578,20 +650,34 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget _buildPhoneLoginIconButton(BuildContext context) {
     return InkWell(
       child: Container(
-        height: 50,
-        width: 50,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
-          borderRadius: const BorderRadius.all(Radius.circular(12)),
-        ),
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(12),
-        child: SvgPicture.asset(
-          Assets.phoneIcon,
-          height: 38,
-          width: 38,
-        ),
-      ),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
+            borderRadius: const BorderRadius.all(Radius.circular(12)),
+          ),
+          alignment: Alignment.center,
+          padding: const EdgeInsets.all(12),
+          child: Row(
+            children: [
+              SvgPicture.asset(
+                Assets.phoneIcon,
+                height: 30,
+                width: 30,
+              ),
+              const SizedBox(width: 15),
+              Flexible(
+                // Prevent text from exceeding width
+                child: Text(
+                  context.tr('signInPhone')!,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 18,
+                  ),
+                  overflow: TextOverflow.ellipsis, // Prevents text overflow
+                  softWrap: false,
+                ),
+              ),
+            ],
+          )),
       onTap: () => Navigator.of(context).pushNamed(Routes.otpScreen),
     );
   }

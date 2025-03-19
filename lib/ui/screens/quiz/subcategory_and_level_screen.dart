@@ -448,6 +448,7 @@ class _AnimatedSubcategoryContainerState
                               ),
                             ),
                             children: [
+                              
                               TextSpan(
                                 text: subcategory.maxLevel.toString(),
                                 style: TextStyle(

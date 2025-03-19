@@ -16,11 +16,11 @@ class UserAchievements extends StatelessWidget {
   final String userCoins;
   final String userScore;
 
-  static const _verticalDivider = VerticalDivider(
+  static const _verticalDivider = Divider(
     color: Color(0x99FFFFFF),
     indent: 12,
     endIndent: 14,
-    thickness: 2,
+    thickness: 1,
   );
 
   @override
@@ -61,7 +61,7 @@ class UserAchievements extends StatelessWidget {
               ),
             ),
             Container(
-              height: 100,
+              height: 200,
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(10),
@@ -74,7 +74,7 @@ class UserAchievements extends StatelessWidget {
                 vertical: size.height * UiUtils.vtMarginPct,
                 horizontal: size.width * UiUtils.hzMarginPct,
               ),
-              child: Row(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   _Achievement(
@@ -109,7 +109,7 @@ class _Achievement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -121,6 +121,11 @@ class _Achievement extends StatelessWidget {
             color: Colors.white.withValues(alpha: 0.7),
           ),
         ),
+        const Padding(
+            padding: EdgeInsets.symmetric(
+          vertical: 12.5,
+          horizontal: 20,
+        )),
         Text(
           value,
           style: const TextStyle(

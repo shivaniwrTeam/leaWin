@@ -17,6 +17,7 @@ import 'package:flutterquiz/features/quiz/models/quiz_type.dart';
 import 'package:flutterquiz/features/quiz/quiz_repository.dart';
 import 'package:flutterquiz/features/system_config/cubits/system_config_cubit.dart';
 import 'package:flutterquiz/ui/screens/quiz/widgets/audio_question_container.dart';
+import 'package:flutterquiz/ui/widgets/ButtonDesing.dart';
 import 'package:flutterquiz/ui/widgets/already_logged_in_dialog.dart';
 import 'package:flutterquiz/ui/widgets/circular_progress_container.dart';
 import 'package:flutterquiz/ui/widgets/custom_appbar.dart';
@@ -154,6 +155,7 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
   int currentQuestionIndex = 0;
   final double optionWidth = 0.7;
   final double optionHeight = 0.09;
+  final bool isbtnshow = false;
 
   late double totalSecondsToCompleteQuiz = 0;
 
@@ -997,6 +999,7 @@ class _QuizScreenState extends State<QuizScreen> with TickerProviderStateMixin {
                   ),
                   _buildLifeLines(),
                   _buildShowOptionButton(),
+                  if (isbtnshow) ...[SimBtn()]
                 ],
               ),
             ),

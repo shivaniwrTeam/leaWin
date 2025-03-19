@@ -75,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   int oldCategoriesToShowCount = 0;
   bool isCateListExpanded = false;
   bool canExpandCategoryList = false;
+  bool isNointernet = false;
 
   final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
@@ -677,6 +678,29 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
                   const Spacer(),
 
+                  /// Settings
+                  Container(
+                    width: size.width * 0.11,
+                    height: size.width * 0.11,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(Routes.settings);
+                      },
+                      icon: QImage(
+                        imageUrl: Assets.settingsIcon,
+                        color: Colors.white,
+                        width: size.width * 0.08,
+                        height: size.width * 0.08,
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(width: 10),
+
                   /// LeaderBoard
                   Container(
                     width: size.width * 0.11,
@@ -698,28 +722,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                               width: size.width * 0.08,
                               height: size.width * 0.08,
                             ),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-
-                  /// Settings
-                  Container(
-                    width: size.width * 0.11,
-                    height: size.width * 0.11,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed(Routes.settings);
-                      },
-                      icon: QImage(
-                        imageUrl: Assets.settingsIcon,
-                        color: Colors.white,
-                        width: size.width * 0.08,
-                        height: size.width * 0.08,
-                      ),
                     ),
                   ),
                 ],
@@ -1028,6 +1030,50 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   }
 
   Widget _buildBattle() {
+    return battleZones.isNotEmpty
+        ? Padding(
+            padding: EdgeInsets.only(
+              left: hzMargin,
+              right: hzMargin,
+              top: scrHeight * 0.03,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                /// Zone Title: Battle
+                Text(
+                  context.tr(battleOfTheDayKey) ?? battleOfTheDayKey, //
+                  style: _boldTextStyle,
+                ),
+
+                /// Categories
+                GridView.count(
+                  // Create a grid with 2 columns. If you change the scrollDirection to
+                  // horizontal, this produces 2 rows.
+                  crossAxisCount: 2,
+                  shrinkWrap: true,
+                  mainAxisSpacing: 20,
+                  padding: EdgeInsets.only(top: _statusBarPadding * 0.2),
+                  crossAxisSpacing: 20,
+                  physics: const NeverScrollableScrollPhysics(),
+                  // Generate 100 widgets that display their index in the List.
+                  children: List.generate(
+                    battleZones.length,
+                    (i) => QuizGridCard(
+                      onTap: () => _onPressedBattle(battleZones[i].title),
+                      title: context.tr(battleZones[i].title)!,
+                      desc: context.tr(battleZones[i].desc)!,
+                      img: battleZones[i].img,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
+        : const SizedBox();
+  }
+
+  Widget _buildVSBattleRound() {
     return battleZones.isNotEmpty
         ? Padding(
             padding: EdgeInsets.only(
@@ -1637,6 +1683,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               ],
               _buildBattle(),
               _buildExamSelf(),
+              if (isNointernet) ...[_buildVSBattleRound()],
               _buildZones(),
             ],
           ),

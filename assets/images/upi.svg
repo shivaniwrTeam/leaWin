@@ -1,16 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="62" height="62" viewBox="0 0 62 62">
-  <defs>
-    <clipPath id="clip-path">
-      <rect id="Rectangle_17698" data-name="Rectangle 17698" width="46" height="46" transform="translate(0.488 0.485)" fill="#4a65a0"/>
-    </clipPath>
-  </defs>
-  <g id="upi" transform="translate(-0.208 0.094)">
-    <rect id="Rectangle_120" data-name="Rectangle 120" width="62" height="62" rx="5" transform="translate(0.208 -0.094)" fill="#f3f7fa"/>
-    <g id="Mask_Group_3766" data-name="Mask Group 3766" transform="translate(7.721 7.42)" clip-path="url(#clip-path)">
-      <g id="upi-2" data-name="upi" transform="translate(6.552 -0.023)">
-        <path id="Path_17635" data-name="Path 17635" d="M33.69,23.908,21.689,0,8.355,47.02Z" transform="translate(0.179)" fill="#097939" fill-rule="evenodd"/>
-        <path id="Path_17636" data-name="Path 17636" d="M28.97,23.908,16.971,0,3.636,47.02Z" transform="translate(-3.636)" fill="#ed752e" fill-rule="evenodd"/>
-      </g>
-    </g>
-  </g>
+<svg width="63" height="62" viewBox="0 0 63 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_3220)">
+<path d="M57.5 0H5.5C2.73858 0 0.5 2.23858 0.5 5V57C0.5 59.7614 2.73858 62 5.5 62H57.5C60.2614 62 62.5 59.7614 62.5 57V5C62.5 2.23858 60.2614 0 57.5 0Z" fill="#F3F7FA"/>
+<mask id="mask0_1_3220" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="8" y="7" width="47" height="47">
+<path d="M54.501 7.99902H8.50098V53.999H54.501V7.99902Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_1_3220)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48.434 31.399L36.433 7.49097L23.099 54.511L48.434 31.399Z" fill="#097939"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M39.899 31.399L27.9 7.49097L14.565 54.511L39.899 31.399Z" fill="#ED752E"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_1_3220">
+<rect width="62" height="62" fill="white" transform="translate(0.5)"/>
+</clipPath>
+</defs>
 </svg>
